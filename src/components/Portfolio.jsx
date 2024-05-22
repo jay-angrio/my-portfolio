@@ -3,6 +3,7 @@ import "./App.css";
 import securedochub from "../assets/portfolio/securedochub.png";
 import allukbuilder from "../assets/portfolio/allukbuilder.png";
 import saidevelopers from "../assets/portfolio/saidevelopers.png";
+import qms from "../assets/portfolio/qms.png";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
 const Portfolio = () => {
@@ -10,17 +11,26 @@ const Portfolio = () => {
     {
       id: 1,
       src: securedochub,
+      name: "SecureDocHub",
       url: "https://dochub-e5625.web.app/",
     },
     {
       id: 2,
       src: allukbuilder,
+      name: "MyUkBuilders",
       url: "https://www.myukbuilders.co.uk/",
     },
     {
       id: 3,
       src: saidevelopers,
+      name: "SaiDevelopers",
       url: "https://saidevelopers-website.web.app/index.html",
+    },
+    {
+      id: 4,
+      src: qms,
+      name: "QueSync",
+      url: "https://getquesync.web.app/login",
     },
   ];
 
@@ -42,7 +52,7 @@ const Portfolio = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
-          {portfolios.map(({ id, src, url }) => (
+          {portfolios.map(({ id, src, url, name }) => (
             <div key={id} className="shadow-md shadow-gray-600 rounded-lg">
               <img
                 src={src}
@@ -54,7 +64,7 @@ const Portfolio = () => {
                   className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105 flex items-center justify-center"
                   onClick={() => openWebsite(url)}
                 >
-                  Site
+                  {name}
                   <span className="px-3">
                     <BsBoxArrowUpRight />
                   </span>

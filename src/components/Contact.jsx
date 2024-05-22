@@ -1,6 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !message) {
+      setError("Please fill in all details.");
+      alert("Please fill in all details.");
+      return;
+    }
+
+    if (!emailPattern.test(email)) {
+      setError("Please enter a valid email address.");
+      alert("Please enter a valid email address.");
+      return;
+    }
+    // Reset error if all fields are filled
+    setError("");
+    // Submit the form
+    e.target.submit();
+  };
+
   return (
     <div
       name="contact"
@@ -19,25 +46,34 @@ const Contact = () => {
             action="https://getform.io/f/warkexyb"
             method="POST"
             className=" flex flex-col w-full md:w-1/2"
+            onSubmit={handleSubmit}
           >
             <input
               type="text"
-              name="name"
+              name="{name}"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
               className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             />
             <input
               type="text"
-              name="email"
+              name="{email}"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="my-4 p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             />
             <textarea
-              name="message"
+              name="{message}"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               placeholder="Enter your message"
               rows="10"
               className="p-2 bg-transparent border-2 rounded-md text-white focus:outline-none"
             ></textarea>
+
+            {error && <p className="text-red-500">{error}</p>}
 
             <button className="text-white bg-gradient-to-b from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300">
               Let's talk

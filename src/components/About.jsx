@@ -40,8 +40,8 @@ const About = () => {
           about the opportunities to collaborate with like-minded professionals
           and make meaningful contributions to the tech community.
         </p>
+        <SocialLinks />
       </div>
-      <SocialLinks />
     </div>
   );
 };

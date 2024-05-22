@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { IoDocumentOutline } from "react-icons/io5";
 
 const SocialLinks = () => {
   const links = [
@@ -10,17 +10,17 @@ const SocialLinks = () => {
       id: 1,
       child: (
         <>
-          LinkedIn <FaLinkedin size={30} />
+          LinkeIn <FaLinkedin size={30} />
         </>
       ),
       href: "https://www.linkedin.com/in/jay-ahir-641707242/",
-      style: "rounded-tr-md",
     },
     {
       id: 2,
       child: (
         <>
-          GitHub <FaGithub size={30} />
+          Github
+          <FaGithub size={30} />
         </>
       ),
       href: "https://github.com/jay-angrio",
@@ -38,30 +38,22 @@ const SocialLinks = () => {
       id: 4,
       child: (
         <>
-          Resume <BsFillPersonLinesFill size={30} />
+          Download CV <IoDocumentOutline size={30} />
         </>
       ),
       href: "/JAY_RESUME",
-      style: "rounded-br-md",
       download: true,
     },
   ];
 
   return (
-    <div className="hidden social-icon lg:flex flex-col top-[35%] left-0 fixed">
-      <ul>
-        {links.map(({ id, child, href, style, download }) => (
-          <li
-            key={id}
-            className={
-              "flex justify-between items-center w-40 h-14 px-4 ml-[-100px] hover:ml-[-10px] hover:rounded-md duration-300 bg-gray-500" +
-              " " +
-              style
-            }
-          >
+    <div>
+      <ul className="grid sm:grid-cols-2 md:grid-cols-4 gap-5 p-12 sm:px-0 justify-start items-center">
+        {links.map(({ id, child, href, download, title }) => (
+          <li key={id}>
             <a
               href={href}
-              className="flex justify-between items-center w-full text-white"
+              className="flex justify-center gap-4 items-center w-full text-white p-3 rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer "
               download={download}
               target="_blank"
               rel="noreferrer"
